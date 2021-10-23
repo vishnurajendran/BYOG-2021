@@ -7,9 +7,9 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] private float throwForce = 600;
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject objectParent;
-    [SerializeField] private bool isHolding = true;
+    private GameObject player;
+    private GameObject objectParent;
+    private bool isHolding = false;
 
     //// Start is called before the first frame update
     void Awake()

@@ -6,7 +6,7 @@ public class FrameLimiter : MonoBehaviour
 {
     [SerializeField] int target = 60;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Application.targetFrameRate = target;
     }
