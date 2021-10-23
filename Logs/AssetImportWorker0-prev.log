@@ -1,205 +1,150 @@
 Using pre-set license
-Built from '2020.3/staging' branch; Version is '2020.3.11f1 (99c7afb366b3) revision 10078127'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home Single Language; OS build 22000.258; Version 2009; 64bit' Language: 'en' Physical Memory: 16155 MB
+Built from '2020.3/staging' branch; Version is '2020.3.21f1 (a38c86f6690f) revision 10718342'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19043.1288; Version 2009; 64bit' Language: 'en' Physical Memory: 16323 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
- COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.11f1\Editor\Unity.exe
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.21f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Code/Clones/BYOG-2021
+E:/GitHub/UnityProjects/BYOG-2021
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58694
-Successfully changed project path to: C:/Code/Clones/BYOG-2021
-C:/Code/Clones/BYOG-2021
+65171
+Successfully changed project path to: E:/GitHub/UnityProjects/BYOG-2021
+E:/GitHub/UnityProjects/BYOG-2021
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 39.04 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 46.50 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2020.3.11f1 (99c7afb366b3)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Code/Clones/BYOG-2021/Assets
+Initialize engine version: 2020.3.21f1 (a38c86f6690f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/GitHub/UnityProjects/BYOG-2021/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1650 Ti (ID=0x1f95)
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 750 Ti (ID=0x1380)
     Vendor:   
-    VRAM:     3962 MB
+    VRAM:     2007 MB
     Driver:   30.0.14.9613
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56060
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56824
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001762 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004848 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 36.14 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 44.98 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.268 seconds
+- Completed reload, in  3.548 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3548ms)
+		BeginReloadAssembly (93ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (557ms)
+			LoadAssemblies (88ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (181ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (204ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (45ms)
+				BeforeProcessingInitializeOnLoad (16ms)
+				ProcessInitializeOnLoadAttributes (100ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003442 seconds.
+Registered in 0.022666 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.088 seconds
+- Completed reload, in  1.415 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1416ms)
+		BeginReloadAssembly (187ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (1146ms)
+			LoadAssemblies (120ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (369ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (53ms)
+			SetupLoadedEditorAssemblies (495ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (107ms)
+				ProcessInitializeOnLoadAttributes (353ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (15ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2011 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 94.4 MB.
-System memory in use after: 94.4 MB.
+Unloading 1975 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 93.0 MB.
+System memory in use after: 93.0 MB.
 
-Unloading 90 unused Assets to reduce memory usage. Loaded Objects now: 2437.
-Total: 3.712400 ms (FindLiveObjects: 0.281400 ms CreateObjectMapping: 0.503500 ms MarkObjects: 2.740700 ms  DeleteObjects: 0.184600 ms)
+Unloading 82 unused Assets to reduce memory usage. Loaded Objects now: 2401.
+Total: 4.529600 ms (FindLiveObjects: 0.252700 ms CreateObjectMapping: 0.176600 ms MarkObjects: 3.831900 ms  DeleteObjects: 0.267000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Texture
+  artifactKey: Guid(7f3712ca69b82b34eabd2fe851bd1347) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture using Guid(7f3712ca69b82b34eabd2fe851bd1347) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3954a139887281c352b06c6fda9305e') in 0.007478 seconds 
+  Import took 0.011148 seconds .
 
 ========================================================================
 Received Import Request.
-  path: Packages/com.coffee.ui-effect/Resources/Default-Transition.png
-  artifactKey: Guid(3e04c247fb2604af186173fce0bc62de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.coffee.ui-effect/Resources/Default-Transition.png using Guid(3e04c247fb2604af186173fce0bc62de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '123792541fc5c461e8e853b1954f3957') in 0.094039 seconds
-  Import took 0.097176 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001281 seconds.
-  path: Packages/com.coffee.ui-effect/Resources/Default-Transition.png
-  artifactKey: Guid(3e04c247fb2604af186173fce0bc62de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.coffee.ui-effect/Resources/Default-Transition.png using Guid(3e04c247fb2604af186173fce0bc62de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '123792541fc5c461e8e853b1954f3957') in 0.011177 seconds
-  Import took 0.014580 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 744.490140 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b1de7a86b72e6f6c070c1b0892aae31') in 0.025484 seconds
-  Import took 0.029104 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.992426 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8ec6a6417ce2260cd910fd6f305b192') in 0.010931 seconds
-  Import took 0.013862 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.013677 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8ec6a6417ce2260cd910fd6f305b192') in 0.014847 seconds
-  Import took 0.017852 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.117139 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d76a7bf606cca005ad26be568c6489d') in 0.031802 seconds
-  Import took 0.034735 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004355 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d76a7bf606cca005ad26be568c6489d') in 0.017528 seconds
-  Import took 0.020591 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 73.056459 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3366414b4c5149a105cdb951f2c997b1') in 0.015082 seconds
-  Import took 0.018310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.010550 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3366414b4c5149a105cdb951f2c997b1') in 0.033739 seconds
-  Import took 0.036997 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.624314 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de9b111fb1a88441e6e7f197aaca24c7') in 0.012756 seconds
-  Import took 0.016215 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.011447 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de9b111fb1a88441e6e7f197aaca24c7') in 0.038320 seconds
-  Import took 0.041246 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 39.161931 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1733560f92faf7d344b448ec4958b26c') in 0.011596 seconds
-  Import took 0.014685 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.022400 seconds.
-  path: Assets/blink_map.png
-  artifactKey: Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/blink_map.png using Guid(ea48c9bf28ecaf842b6f96aecd73e9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1733560f92faf7d344b448ec4958b26c') in 0.017802 seconds
-  Import took 0.020925 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002960 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.143 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1914 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.8 MB.
-System memory in use after: 90.8 MB.
-
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2425.
-Total: 2.370100 ms (FindLiveObjects: 0.175700 ms CreateObjectMapping: 0.070600 ms MarkObjects: 1.987800 ms  DeleteObjects: 0.134600 ms)
+  Time since last request: 15.868574 seconds.
+  path: Assets/ProBuilder Data/Default Color Palette.asset
+  artifactKey: Guid(9efd9145653753e47978047073cc2979) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ProBuilder Data/Default Color Palette.asset using Guid(9efd9145653753e47978047073cc2979) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d5956ce1551b4e3fbb7fe14a3d19a2e') in 0.056101 seconds 
+  Import took 0.059789 seconds .
 
