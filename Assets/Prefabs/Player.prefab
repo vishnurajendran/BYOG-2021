@@ -78,7 +78,7 @@ MonoBehaviour:
   m_JumpSpeed: 0
   m_JWalkSpeed: 7
   m_JRunSpeed: 9
-  m_StickToGroundForce: 7
+  m_StickToGroundForce: 5
   m_GravityMultiplier: 2
   m_CrouchToggle: 0
   m_IsCrouching: 0
@@ -201,16 +201,12 @@ MonoBehaviour:
     CrouchHorizontalBob: 0
     CrouchVerticalBob: 0
     CrouchBobInterval: 2.5
-  m_Built_inAudio: 0
-  m_StepInterval: 2
-  m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_FootstepSounds: []
+  m_JumpSound: {fileID: 0}
+  m_LandSound: {fileID: 0}
   m_AdvancedAudioSystem:
-    WalkAudioSpeed: 1.5
-    JogAudioSpeed: 1.5
+    WalkAudioSpeed: 1.35
+    JogAudioSpeed: 2.25
     RunAudioSpeed: 1.7
 --- !u!114 &114870630230197700
 MonoBehaviour:
@@ -267,7 +263,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

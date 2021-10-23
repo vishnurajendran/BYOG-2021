@@ -59,8 +59,6 @@ namespace Scripts.FPSController
         
 
         [Header("Audio")]
-        [SerializeField] private bool m_Built_inAudio;
-        [SerializeField] private float m_StepInterval;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
@@ -69,6 +67,8 @@ namespace Scripts.FPSController
         [SerializeField] private AudioValues m_AdvancedAudioSystem = new AudioValues();
 
 
+        private float m_StepInterval;
+        private bool m_Built_inAudio;   // disabled for now very buggy
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -92,6 +92,8 @@ namespace Scripts.FPSController
         // Use this for initialization
         private void Start()
         {
+            m_IsJogging = true;
+            m_Built_inAudio = false;
             m_JumpSpeed = m_JWalkSpeed;
             temp = this.transform.position;
             m_StepInterval = 5;
@@ -121,8 +123,8 @@ namespace Scripts.FPSController
             else
                 forward = false;
 
-            if (Input.GetButtonDown("Walk/Jog") && !m_IsCrouching )
-                m_IsJogging = !m_IsJogging;
+            //if (Input.GetButtonDown("Walk/Jog") && !m_IsCrouching )
+            //    m_IsJogging = !m_IsJogging;
 
             if (!m_IsWalking && forward)
             {
@@ -138,7 +140,7 @@ namespace Scripts.FPSController
             {
                 m_Speed = m_JogSpeed;
                 m_JumpSpeed = m_JWalkSpeed;
-                m_StepInterval = 3;
+                m_StepInterval = 2.25f;
                 m_HeadBob.HorizontalBobRange = m_BobVariables.JogHorizontalBob;
                 m_HeadBob.VerticalBobRange = m_BobVariables.JogVerticalBob;
                 m_HeadBob.m_BobBaseInterval = m_BobVariables.JogBobInterval;
@@ -148,7 +150,7 @@ namespace Scripts.FPSController
             {
                 m_Speed = m_WalkSpeed;
                 m_JumpSpeed = m_JWalkSpeed;
-                m_StepInterval = 2;
+                m_StepInterval = 1.25f;
                 m_HeadBob.HorizontalBobRange = m_BobVariables.WalkHorizontalBob;
                 m_HeadBob.VerticalBobRange = m_BobVariables.WalkVerticalBob;
                 m_HeadBob.m_BobBaseInterval = m_BobVariables.WalkBobInterval;
@@ -157,7 +159,7 @@ namespace Scripts.FPSController
             else if (m_IsCrouching)
             {
                 m_Speed = m_CrouchSpeed;
-                m_StepInterval = 2.5f;
+                m_StepInterval = 3f;
                 m_HeadBob.HorizontalBobRange = m_BobVariables.CrouchHorizontalBob;
                 m_HeadBob.VerticalBobRange = m_BobVariables.CrouchVerticalBob;
                 m_HeadBob.m_BobBaseInterval = m_BobVariables.CrouchBobInterval;
@@ -217,8 +219,8 @@ namespace Scripts.FPSController
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
-                if (m_Built_inAudio)
-                    PlayLandingSound();                     //comment this line to stop the built_in AudioSystem Jump
+                //if (m_Built_inAudio)
+                //    PlayLandingSound();                     //comment this line to stop the built_in AudioSystem Jump
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }
@@ -255,8 +257,8 @@ namespace Scripts.FPSController
                 if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
-                    if (m_Built_inAudio)
-                        PlayJumpSound();                    //comment this line to stop the startJumpSound
+                    //if (m_Built_inAudio)
+                    //    PlayJumpSound();                    //comment this line to stop the startJumpSound
                     m_Jump = false;
                     m_Jumping = true;
                 }
@@ -268,8 +270,8 @@ namespace Scripts.FPSController
 
             if (!m_IsSliding)
                 m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
-            if (m_Built_inAudio)
-                ProgressStepCycle(speed);                   //comment this line to stop the built_in AudioSystem
+            //if (m_Built_inAudio)
+            //    ProgressStepCycle(speed);                   //comment this line to stop the built_in AudioSystem
             UpdateCameraPosition(speed);
 
             PrevPos = this.transform.position;

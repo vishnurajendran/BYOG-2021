@@ -21,7 +21,7 @@ namespace Scripts.FootstepsSystem
         public static SurfaceIdentifier singleton;
 
         [SerializeField] SurfaceDefinition1[] definedSurfaces;
-        [SerializeField] RegisteredMaterial1[] registeredTextures;
+        RegisteredMaterial1[] registeredTextures; // not showing in inspector for now
 
         int n;
 
@@ -34,7 +34,7 @@ namespace Scripts.FootstepsSystem
 
         public AudioClip GetFootstep(Collider groundCollider, Vector3 worldPosition)
         {
-            int surfaceIndex = GetSurfaceIndex(groundCollider, worldPosition);
+            int surfaceIndex = 0; //GetSurfaceIndex(groundCollider, worldPosition);
 
             if (surfaceIndex == -1)
             {
