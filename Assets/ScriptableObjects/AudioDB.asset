@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioKeyPairList:
   - fileKey: First_Reset
-    soundFile: {fileID: 8300000, guid: 6c8f47aaee36b6741a00171dc050353b, type: 3}
+    soundFile: {fileID: 8300000, guid: ef4da5a9f5f58c84391747e486400a6d, type: 3}
