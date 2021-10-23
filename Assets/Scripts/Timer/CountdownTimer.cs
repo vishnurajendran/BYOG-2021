@@ -17,11 +17,19 @@ public class TimerEndEvent : UnityEvent
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Text timerText;
+    [SerializeField] AudioSource tickSource;
+    [SerializeField] AudioSource tingSource;
+    [SerializeField] bool ignoreFirst = true;
+
+    [SerializeField] int testMin=5;
+    [SerializeField] int testSec=0;
+    [SerializeField] bool test = false;
 
     int minutes = 0;
     int seconds = 0;
 
     Coroutine timerRoutine = null;
+   
 
     /// <summary>
     /// Invoked every second
@@ -117,10 +125,19 @@ public class CountdownTimer : MonoBehaviour
             {
                 seconds = 59;
                 minutes -= 1;
+
+                if (ignoreFirst)
+                {
+                    ignoreFirst = false;
+                }
+                else
+                    tingSource.Play();
             }
 
+            tickSource.Play();
+
             OnTimerTick?.Invoke(minutes, Seconds);
-            timerText.text = string.Format("{0}:{1}", minutes > 10 ? minutes.ToString() : "0" + minutes, seconds > 10 ? seconds.ToString() : "0" + seconds);
+            timerText.text = string.Format("{0}:{1}", minutes > 9 ? minutes.ToString() : "0" + minutes, seconds > 9 ? seconds.ToString() : "0" + seconds);
         }
 
         OnTimerEnd?.Invoke();
@@ -129,7 +146,10 @@ public class CountdownTimer : MonoBehaviour
 
     private void Start()
     {
-        SetTimer(5, 0);
-        StartTimer();
+        if (test)
+        {
+            SetTimer(testMin, testSec);
+            StartTimer();
+        }
     }
 }
