@@ -21,7 +21,7 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.isPaused)
+        if(GameManager.Instance != null && GameManager.Instance.isPaused)
             this.GetComponent<Rigidbody>().isKinematic = true;
         else
             this.GetComponent<Rigidbody>().isKinematic = false;
