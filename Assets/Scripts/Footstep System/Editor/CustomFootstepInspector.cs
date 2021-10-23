@@ -4,7 +4,7 @@ using UnityEditor;
 namespace Scripts.FootstepsSystem
 {
     // Custom inspector of type 'FootstepProducer'
-    [CustomEditor(typeof(FootstepProducer))]
+    //[CustomEditor(typeof(FootstepProducer))]
     public class FootstepInspector : Editor
     {
 

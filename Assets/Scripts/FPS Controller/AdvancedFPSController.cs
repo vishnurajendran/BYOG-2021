@@ -68,7 +68,6 @@ namespace Scripts.FPSController
 
 
         private float m_StepInterval;
-        private bool m_Built_inAudio;   // disabled for now very buggy
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -94,7 +93,6 @@ namespace Scripts.FPSController
         {
             //m_IsWalking = true;
             m_IsJogging = true;
-            m_Built_inAudio = false;
             m_JumpSpeed = m_JWalkSpeed;
             temp = this.transform.position;
             m_StepInterval = 5;
@@ -261,8 +259,6 @@ namespace Scripts.FPSController
                 if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
-                    //if (m_Built_inAudio)
-                    //    PlayJumpSound();                    //comment this line to stop the startJumpSound
                     m_Jump = false;
                     m_Jumping = true;
                 }
@@ -274,8 +270,7 @@ namespace Scripts.FPSController
 
             if (!m_IsSliding)
                 m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
-            //if (m_Built_inAudio)
-            //    ProgressStepCycle(speed);                   //comment this line to stop the built_in AudioSystem
+            
             UpdateCameraPosition(speed);
 
             PrevPos = this.transform.position;
@@ -292,16 +287,6 @@ namespace Scripts.FPSController
             {
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null)
                 {
-
-                    //Pickup item = hit.transform.gameObject.GetComponent<Pickup>();
-                    //if (item.type == 1)
-                    //{
-                    //    playerUI.EnableInteractionPanel(dbManager.FetchWeaponByID(item.itemID).itemName, item.quantity);
-                    //}
-                    //else if (item.type == 2)
-                    //{
-                    //    playerUI.EnableInteractionPanel(dbManager.FetchConsumableByID(item.itemID).itemName, item.quantity);
-                    //}
 
                     if (Input.GetButtonDown("Interact"))
                     {
@@ -367,19 +352,10 @@ namespace Scripts.FPSController
             bool waswalking = m_IsWalking;
 
 
-#if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetButton("Sprint");
-#endif
-            // set the desired speed to be walking or running
-            /*if (!m_IsWalking && Input.GetAxis("Vertical") == 1)
-            {
-                speed = m_RunSpeed;
-                m_Speed = m_RunSpeed;
-                m_IsJogging = true;
-            }
-            else*/
+            
             speed = m_Speed;
             //speed = m_IsWalking ? m_Speed : m_RunSpeed;
 
