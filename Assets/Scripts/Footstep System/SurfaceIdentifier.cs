@@ -26,7 +26,7 @@ namespace Scripts.FootstepsSystem
         int n;
 
 
-        void Start()
+        void Awake()
         {
             if (!singleton) singleton = this;
             else if (singleton != this) Destroy(gameObject);

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-
     [SerializeField] private float throwForce = 600;
 
     private GameObject player;
@@ -21,6 +21,10 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.isPaused)
+            this.GetComponent<Rigidbody>().isKinematic = true;
+        else
+            this.GetComponent<Rigidbody>().isKinematic = false;
 
         //if (Input.GetKeyDown(KeyCode.E))
         //{
