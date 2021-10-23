@@ -11,9 +11,9 @@ namespace Scripts.FPSController
     public class AdvancedFPSController : MonoBehaviour
     {
 
-        [Header("Toggle Options (Not Working ATM)")]
-        [SerializeField] private bool sprintToggle;
-        [SerializeField] private bool crouchToggle;
+        //[Header("Toggle Options (Not Working ATM)")]
+        //[SerializeField] private bool sprintToggle;
+        //[SerializeField] private bool crouchToggle;
 
         [Header("Walk/Run")]
         [SerializeField] private bool m_IsWalking;
@@ -92,6 +92,7 @@ namespace Scripts.FPSController
         // Use this for initialization
         private void Start()
         {
+            //m_IsWalking = true;
             m_IsJogging = true;
             m_Built_inAudio = false;
             m_JumpSpeed = m_JWalkSpeed;
@@ -117,6 +118,9 @@ namespace Scripts.FPSController
         // Update is called once per frame
         private void Update()
         {
+
+            InteractionChecker();
+
             bool forward;
             if (Input.GetAxis("Vertical") == 1)
                 forward = true;
@@ -277,53 +281,56 @@ namespace Scripts.FPSController
             PrevPos = this.transform.position;
 
         }
-        private void PlayLandingSound()
-        {
-            m_AudioSource.clip = m_LandSound;
-            m_AudioSource.Play();
-            m_NextStep = m_StepCycle + .5f;
-        }
-
-        private void PlayJumpSound()
-        {
-            m_AudioSource.clip = m_JumpSound;
-            m_AudioSource.Play();
-        }
 
 
-        private void ProgressStepCycle(float speed)
+        private GameObject heldObject = null;
+        public void InteractionChecker()
         {
-            if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
+            RaycastHit hit;
+            Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            if (Physics.Raycast(ray, out hit, 2.3f))
             {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
-                             Time.fixedDeltaTime;
-            }
+                if (hit.collider.gameObject.GetComponent<Interactable>() != null)
+                {
 
-            if (!(m_StepCycle > m_NextStep))
+                    //Pickup item = hit.transform.gameObject.GetComponent<Pickup>();
+                    //if (item.type == 1)
+                    //{
+                    //    playerUI.EnableInteractionPanel(dbManager.FetchWeaponByID(item.itemID).itemName, item.quantity);
+                    //}
+                    //else if (item.type == 2)
+                    //{
+                    //    playerUI.EnableInteractionPanel(dbManager.FetchConsumableByID(item.itemID).itemName, item.quantity);
+                    //}
+
+                    if (Input.GetButtonDown("Interact"))
+                    {
+                        if(heldObject == null)
+                        {
+                            heldObject = hit.collider.gameObject;
+                            hit.collider.gameObject.GetComponent<Interactable>().Hold(true);
+                        }
+                        else
+                        {
+                            heldObject.GetComponent<Interactable>().Hold(false);
+                            heldObject = null;
+                        }
+                    }
+                    if (Input.GetMouseButtonDown(0) && heldObject != null)
+                    {
+                        heldObject.GetComponent<Interactable>().Throw();
+                        heldObject = null;
+                    }
+                }
+                else
+                {
+                
+                }
+            }
+            else
             {
-                return;
+            
             }
-
-            m_NextStep = m_StepCycle + m_StepInterval;
-
-            PlayFootStepAudio();
-        }
-
-
-        private void PlayFootStepAudio()
-        {
-            if (!m_CharacterController.isGrounded)
-            {
-                return;
-            }
-            // pick & play a random footstep sound from the array,
-            // excluding sound at index 0
-            int n = Random.Range(1, m_FootstepSounds.Length);
-            m_AudioSource.clip = m_FootstepSounds[n];
-            m_AudioSource.PlayOneShot(m_AudioSource.clip);
-            // move picked sound to index 0 so it's not picked next time
-            m_FootstepSounds[n] = m_FootstepSounds[0];
-            m_FootstepSounds[0] = m_AudioSource.clip;
         }
 
 
