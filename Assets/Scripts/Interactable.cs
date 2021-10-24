@@ -6,6 +6,8 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] private float throwForce = 600;
+    [SerializeField] LayerMask pickupLayer;
+    [SerializeField] LayerMask defaultLayer;
 
     private GameObject player;
     private GameObject objectParent;
@@ -14,6 +16,9 @@ public class Interactable : MonoBehaviour
     //// Start is called before the first frame update
     void Awake()
     {
+        pickupLayer = 1 << LayerMask.NameToLayer("Clipping Helper");
+        defaultLayer = 1 << LayerMask.NameToLayer("Default");
+
         player = GameObject.Find("Player");
         objectParent = FindChild(player.transform, "ObjectHolder").gameObject;
     }
@@ -76,6 +81,7 @@ public class Interactable : MonoBehaviour
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             this.transform.parent = objectParent.transform;
+            this.transform.gameObject.layer = LayerMask.NameToLayer("Clipping Helper");
         }
         else if(!isHolding && this.transform.parent == objectParent.transform)
         {
@@ -83,6 +89,7 @@ public class Interactable : MonoBehaviour
             if (this.transform.position.y < player.transform.position.y)
                 this.transform.position = player.transform.position + new Vector3(0, 0, 2f);
             this.GetComponent<Rigidbody>().isKinematic = false;
+            this.transform.gameObject.layer = LayerMask.NameToLayer("Default");
         }
     }
 
