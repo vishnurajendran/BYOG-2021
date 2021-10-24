@@ -48,7 +48,6 @@ MonoBehaviour:
   newGameStart: 0
   cursorLockedVar: 0
   isPaused: 0
-  pauseAmbientMusic: {fileID: 0}
   mainMenu: {fileID: 2223099579897474577}
   pauseMenu: {fileID: 2223099579646716748}
   creditsUI: {fileID: 2223099579750003876}
@@ -73,9 +72,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6519232427028178885}
     m_Modifications:
+    - target: {fileID: 2223099579627743951, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519232427028178884}
     - target: {fileID: 2223099579653580812, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
       propertyPath: m_text
-      value: 'Devs - Hitesh,Rutvij,Vishnu,Venkat
+      value: 'Devs - Vishnu, Rutvij, Venkat, Hitesh
 
 
         Assets
@@ -85,10 +88,74 @@ PrefabInstance:
 
         Songs - HeatleyBros'
       objectReference: {fileID: 0}
+    - target: {fileID: 2223099579653580815, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099579653580815, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099579653580815, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099579653580815, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099580020853029, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519232427028178884}
+    - target: {fileID: 2223099580297909018, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519232427028178884}
+    - target: {fileID: 2223099580395740115, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_text
+      value: "\u042F\u018E5ET"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099580570393667, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519232427028178884}
+    - target: {fileID: 2223099580936457604, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2223099581004415636, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2223099581011499506, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581011499506, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581011499506, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581011499506, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581011499507, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_text
+      value: "\u042F\u018E5ET"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581114351907, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223099581567359946, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6519232427028178884}
     - target: {fileID: 2223099581628890539, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
