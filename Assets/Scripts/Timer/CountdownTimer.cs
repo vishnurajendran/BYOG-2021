@@ -40,21 +40,26 @@ public class CountdownTimer : MonoBehaviour
     /// </summary>
     public TimerEndEvent OnTimerEnd = null;
 
-    private static CountdownTimer instance;
-    public static CountdownTimer Instance
+    public static CountdownTimer[] Instance
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<CountdownTimer>();
+            CountdownTimer[] instances = null;
 
-            if (instance.OnTimerTick == null)
-                instance.OnTimerTick = new TimerTickEvent();
+            if (instances == null)
+            {
+                instances = FindObjectsOfType<CountdownTimer>();
 
-            if (instance.OnTimerEnd == null)
-                instance.OnTimerEnd = new TimerEndEvent();
+                foreach (CountdownTimer instance in instances)
+                {
+                    if (instance.OnTimerTick == null)
+                        instance.OnTimerTick = new TimerTickEvent();
 
-            return instance;
+                    if (instance.OnTimerEnd == null)
+                        instance.OnTimerEnd = new TimerEndEvent();
+                }
+            }
+            return instances;
         }
     }
 
