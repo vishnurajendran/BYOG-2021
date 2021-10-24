@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
         public string voName;
         [SerializeField]
         public string textOnScreen;
-
         public AudioInfo(string voName, string textOnScreen)
         {
             this.voName = voName;
@@ -23,6 +22,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource bgSource;
 
     [SerializeField] AudioClip[] bgClips;
+    [SerializeField] float maxVolBG = 0.25f;
 
     public static AudioManager instance;
 
@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip GetAudioClip(string key)
     {
-        return Resources.Load<AudioClip>(audioLookup[key].voName);
+        return Resources.Load<AudioClip>(key);
     }
 
     public void PlayBG(int levelNum)
@@ -59,13 +59,13 @@ public class AudioManager : MonoBehaviour
             return;
 
         Sequence seq = DOTween.Sequence()
-            .Append(bgSource.DOFade(0, 0.15f))
+            .Append(bgSource.DOFade(0* maxVolBG, 0.15f))
             .AppendCallback(() => {
                 bgSource.Stop();
                 bgSource.loop = true;
                 bgSource.clip = bgClips[levelNum];
                 bgSource.Play();
-                bgSource.DOFade(1, 0.15f);
+                bgSource.DOFade(1* maxVolBG, 0.15f);
             });
         
     }
