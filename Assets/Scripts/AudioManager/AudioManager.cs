@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip[] bgClips;
     [SerializeField] float maxVolBG = 0.25f;
+    [SerializeField] float minVolBG = 0.1f;
 
     public static AudioManager instance;
 
@@ -39,9 +40,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayVOAudio(string key)
+    public float PlayVOAudio(string key)
     {
-        voSource.PlayOneShot(GetAudioClip(key));
+        AudioClip clip = GetAudioClip(key);
+        bgSource.DOFade(1 * minVolBG, 0.15f);
+        voSource.clip = clip;
+        voSource.Play();
+        Sequence sequence = DOTween.Sequence()
+            .AppendInterval(clip.length)
+            .AppendCallback(() =>
+            {
+                bgSource.DOFade(1 * maxVolBG, 0.15f);
+            });
+        return clip.length;
     }
 
     public Dictionary<string, AudioInfo> audioLookup = new Dictionary<string, AudioInfo>{

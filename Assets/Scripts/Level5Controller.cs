@@ -21,6 +21,7 @@ public class Level5Controller : MonoBehaviour
     {
         if(inputField.text.ToLower() == "reset")
         {
+            GameManager.Instance.EndGame();
             Debug.Log("ho gaya");
         }
     }
