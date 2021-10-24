@@ -101,6 +101,8 @@ public class Interactable : MonoBehaviour
         this.transform.parent = null;
         this.GetComponent<Rigidbody>().isKinematic = false;
         this.GetComponent<Rigidbody>().AddForce(player.transform.forward * throwForce);
+        this.transform.gameObject.layer = LayerMask.NameToLayer("Default");
+        SetChildLayer(this.transform, "Default");
     }
 
     public static Transform FindChild(Transform parentObject, string name, bool matchCase = true)
