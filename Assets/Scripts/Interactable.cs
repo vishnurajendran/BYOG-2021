@@ -82,6 +82,7 @@ public class Interactable : MonoBehaviour
             this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             this.transform.parent = objectParent.transform;
             this.transform.gameObject.layer = LayerMask.NameToLayer("Clipping Helper");
+            SetChildLayer(this.transform, "Clipping Helper");
         }
         else if(!isHolding && this.transform.parent == objectParent.transform)
         {
@@ -90,6 +91,7 @@ public class Interactable : MonoBehaviour
                 this.transform.position = player.transform.position + new Vector3(0, 0, 2f);
             this.GetComponent<Rigidbody>().isKinematic = false;
             this.transform.gameObject.layer = LayerMask.NameToLayer("Default");
+            SetChildLayer(this.transform, "Default");
         }
     }
 
@@ -110,6 +112,19 @@ public class Interactable : MonoBehaviour
         foreach (Transform child in parentObject)
         {
             temp = FindChild(child, name, matchCase);
+            if (temp != null)
+                return temp;
+        }
+        return null;
+    }
+
+    public static Transform SetChildLayer(Transform parentObject, string layerName)
+    {
+        Transform temp = null;
+        foreach (Transform child in parentObject)
+        {
+            child.transform.gameObject.layer = LayerMask.NameToLayer(layerName);
+            temp = FindChild(child, layerName);
             if (temp != null)
                 return temp;
         }
