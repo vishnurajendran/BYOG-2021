@@ -284,12 +284,12 @@ namespace Scripts.FPSController
         public void InteractionChecker()
         {
             RaycastHit hit;
-            Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-            if (Physics.SphereCast(ray,1, out hit, 5))
+            Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            Debug.DrawRay(m_Camera.transform.position, m_Camera.transform.forward, Color.green);
+            if (Physics.Raycast(ray, out hit, 2.3f))
             {
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null)
                 {
-
                     if (Input.GetButtonDown("Interact"))
                     {
                         if(heldObject == null)
@@ -309,14 +309,6 @@ namespace Scripts.FPSController
                         heldObject = null;
                     }
                 }
-                else
-                {
-                
-                }
-            }
-            else
-            {
-            
             }
         }
 

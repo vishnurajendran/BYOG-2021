@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b853254ac8bd326488402cd285e92b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level5Controller: {fileID: 574959322}
 --- !u!1 &5374519484788637761
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5374519484788637766}
+  - component: {fileID: 574959322}
   m_Layer: 0
   m_Name: Level5Objs
   m_TagString: Untagged
@@ -139,3 +141,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574959322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374519484788637761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7aa4aec94a9e34dab5cdfe36a82b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level5KeyPad: {fileID: 0}
+  inputField: {fileID: 0}

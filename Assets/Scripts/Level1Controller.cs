@@ -13,7 +13,7 @@ public class Level1Controller : MonoBehaviour
     // Start is called before the first frame update
     public void EndLevel(Collider collider)
     {
-        Transform key = collider.transform.Find("FloorKey");
+        Transform key = collider.transform.Find("FirstPersonCharacter/ObjectHolder/FloorKey");
         if (key != null)
         {
             Destroy(key.gameObject);
