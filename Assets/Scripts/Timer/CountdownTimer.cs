@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class TimerTickEvent: UnityEvent<int, int>
+public class TimerTickEvent : UnityEvent<int, int>
 {
 
 }
@@ -21,15 +21,15 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] AudioSource tingSource;
     [SerializeField] bool ignoreFirst = true;
 
-    [SerializeField] int testMin=5;
-    [SerializeField] int testSec=0;
+    [SerializeField] int testMin = 5;
+    [SerializeField] int testSec = 0;
     [SerializeField] bool test = false;
 
     int minutes = 0;
     int seconds = 0;
 
     Coroutine timerRoutine = null;
-   
+
 
     /// <summary>
     /// Invoked every second
@@ -102,7 +102,7 @@ public class CountdownTimer : MonoBehaviour
     /// </summary>
     public void StartTimer()
     {
-        if(timerRoutine == null)
+        if (timerRoutine == null)
         {
             timerRoutine = StartCoroutine(CountdownTimerRoutine());
         }
@@ -113,7 +113,7 @@ public class CountdownTimer : MonoBehaviour
     /// </summary>
     public void StopTimer()
     {
-        if(timerRoutine != null)
+        if (timerRoutine != null)
         {
             StopCoroutine(timerRoutine);
         }
@@ -147,6 +147,11 @@ public class CountdownTimer : MonoBehaviour
 
         OnTimerEnd?.Invoke();
         timerRoutine = null;
+    }
+
+    public string GetCurrentTimeString()
+    {
+        return string.Format("{0}{1}", minutes > 9 ? minutes.ToString() : "0" + minutes, seconds > 9 ? seconds.ToString() : "0" + seconds);
     }
 
     private void Start()

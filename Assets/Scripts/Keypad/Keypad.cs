@@ -33,6 +33,7 @@ public class Keypad : MonoBehaviour
         for (int i = 0; i < numButtons.Count; i++)
         {
             int num = i;
+            numButtons[i].onClick.RemoveAllListeners();
             numButtons[i].onClick.AddListener(() =>
             {
                 OnPress(num);
