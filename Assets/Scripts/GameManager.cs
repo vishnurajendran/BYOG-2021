@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
 {
 
     private static GameManager instance;
-    public static GameManager Instance { 
+    public static GameManager Instance {
         get
         {
             if (instance == null)
                 instance = FindObjectOfType<GameManager>();
             return instance;
-        } 
+        }
     }
 
 
@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
 
     public bool cursorLockedVar;
     public bool isPaused;
-
-    [Header("Pause Game Manager")]
-    public AudioClip pauseAmbientMusic;
 
     [Header("UI")]
     public CanvasGroup mainMenu;
@@ -45,7 +42,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DOTween.Init();
-        LoadMainMenu();
+
+        if (PlayerPrefs.HasKey("GameReset"))
+            StartGameIgnoreIntro();
+        else
+            LoadMainMenu();
+
     }
 
     // Update is called once per frame
@@ -119,7 +121,7 @@ public class GameManager : MonoBehaviour
 
         mainMenu.gameObject.SetActive(true);
         mainMenu.alpha = 1;
-        
+
         pauseMenu.alpha = 1;
         pauseMenu.gameObject.SetActive(false);
 
@@ -134,34 +136,94 @@ public class GameManager : MonoBehaviour
         isPaused = true;
     }
 
+    public void EndGame()
+    {
+        float voTime = AudioManager.instance.PlayVOAudio("reset_outro");
+        Sequence sequence = DOTween.Sequence()
+            .AppendInterval(voTime)
+            .AppendCallback(() =>
+            {
+                ResetGame();
+            });
+    }
+
     public void StartGame()
     {
         Time.timeScale = 1f;
 
-        isPaused = false;
+        //isPaused = false;
         mainMenu.alpha = 0;
         mainMenu.gameObject.SetActive(false);
         hud.gameObject.SetActive(true);
 
+        isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cursorLockedVar = true;
 
+        CountdownTimer.Instance[0].OnTimerEnd.AddListener(ResetGame);
+        foreach (CountdownTimer timer in CountdownTimer.Instance)
+        {
+            timer.SetTimer(5, 0);
+            timer.StartTimer();
+        }
+
+        float voTime = AudioManager.instance.PlayVOAudio("reset_intro");
+        Sequence sequence = DOTween.Sequence()
+            .AppendInterval(voTime)
+            .AppendCallback(() =>
+            {
+
+            });
     }
 
-    public void SaveGame()
+    public void StartGameIgnoreIntro()
     {
-        //PlayerPrefs.SetFloat("xval", pController.gameObject.transform.position.x);
-        //PlayerPrefs.SetFloat("yval", pController.gameObject.transform.position.y);
-        //PlayerPrefs.SetFloat("zval", pController.gameObject.transform.position.z);
-        //pController.SavePlayerData();
-        //dbManager.SaveDatabase();
-        //inventoryManager.SaveInventorySlots();
-        //StartCoroutine(playerUI.DisplayLog("Game Saved"));
+        Time.timeScale = 1f;
+
+        //isPaused = false;
+        mainMenu.alpha = 0;
+        mainMenu.gameObject.SetActive(false);
+        hud.gameObject.SetActive(true);
+
+        isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        cursorLockedVar = true;
+
+        CountdownTimer.Instance[0].OnTimerEnd.AddListener(ResetGame);
+        foreach (CountdownTimer timer in CountdownTimer.Instance)
+        {
+            timer.SetTimer(5, 0);
+            timer.StartTimer();
+        }
+
+        float voTime = AudioManager.instance.PlayVOAudio("taunts/ap_taunt_0" + Random.Range(1,10).ToString());
+        Sequence sequence = DOTween.Sequence()
+            .AppendInterval(voTime)
+            .AppendCallback(() =>
+            {
+                AudioManager.instance.PlayVOAudio("playerreset/p_reset_0" + Random.Range(1, 9).ToString());
+            });
+
+    }
+
+    public void ResetGame()
+    {
+        SaveReset();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SaveReset()
+    {
+        PlayerPrefs.SetInt("GameReset", 1);
+        PlayerPrefs.Save();
     }
 
     public void ExitToDesktop()
     {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
