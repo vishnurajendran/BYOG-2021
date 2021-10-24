@@ -23,8 +23,11 @@ public class Interactable : MonoBehaviour
     {
         if(GameManager.Instance != null && GameManager.Instance.isPaused)
             this.GetComponent<Rigidbody>().isKinematic = true;
+        else if(isHolding)
+            this.GetComponent<Rigidbody>().isKinematic = true;
         else
             this.GetComponent<Rigidbody>().isKinematic = false;
+
 
         //if (Input.GetKeyDown(KeyCode.E))
         //{
