@@ -36,11 +36,12 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         cursorLockedVar = true;
 
-        isPaused = false;
+        isPaused = true;
     }
 
     void Start()
     {
+        isPaused = true;
         DOTween.Init();
 
         if (PlayerPrefs.HasKey("GameReset"))
@@ -55,7 +56,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseToggle();
+            if (creditsUI.gameObject.activeInHierarchy || mainMenu.gameObject .activeInHierarchy)
+                CloseCredits();
+            else
+                PauseToggle();
         }
     }
 
@@ -131,13 +135,23 @@ public class GameManager : MonoBehaviour
         hud.alpha = 1;
         hud.gameObject.SetActive(false);
 
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         ShowCursor();
         isPaused = true;
+        AudioManager.instance.PlayBG(0);
     }
 
+    public bool gameComplete = false;
     public void EndGame()
     {
+        if (gameComplete)
+            return;
+        
+        gameComplete = true;
+        foreach (CountdownTimer timer in CountdownTimer.Instance)
+        {
+            timer.StopTimer();
+        }
         float voTime = AudioManager.instance.PlayVOAudio("reset_outro");
         Sequence sequence = DOTween.Sequence()
             .AppendInterval(voTime)
@@ -150,7 +164,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1f;
-
+        AudioManager.instance.PlayBG(1);
         //isPaused = false;
         mainMenu.alpha = 0;
         mainMenu.gameObject.SetActive(false);

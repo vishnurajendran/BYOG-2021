@@ -34,6 +34,7 @@ public class Level5Controller : MonoBehaviour
     {
         if (inputField.text.ToLower() == "reset")
         {
+            level5KeyPad.gameObject.SetActive(false);
             GameManager.Instance.EndGame();
             Debug.Log("ho gaya");
         }
