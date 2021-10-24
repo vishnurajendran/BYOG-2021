@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 namespace BYOG2021
 {
     public class Level2Controller : MonoBehaviour
     {
+        [SerializeField]
+        private Transform levelEndTransform;
+        [SerializeField]
+        private string correctSequence;
+        private string currentSequence;
         private List<PlatformCubeView> platformCubeViews = null;
-
-        private Queue<PlatformCubeView> enteredPlatforms = null;
 
         private void Start()
         {
-            this.enteredPlatforms = new Queue<PlatformCubeView>();
+            currentSequence = "";
 
             this.platformCubeViews = this.gameObject.GetComponentsInChildren<PlatformCubeView>().ToList();
 
@@ -25,46 +29,33 @@ namespace BYOG2021
 
         public void OnEnterPlatform(PlatformCubeView platform)
         {
-            if (this.enteredPlatforms.Count < this.platformCubeViews.Count)
+            if (!currentSequence.Contains(platform.gameObject.name))
             {
-                this.enteredPlatforms.Enqueue(platform);
-                Debug.LogFormat("enteredPlatforms count : {0}", this.enteredPlatforms.Count);
-
-                if (this.enteredPlatforms.Count == this.platformCubeViews.Count)
+                currentSequence += platform.gameObject.name;
+                if (currentSequence.Length == correctSequence.Length)
                 {
                     StartCoroutine(AllCubesDoneNowCheck());
                 }
             }
+
+            Debug.Log("updated sequence " + currentSequence);
         }
 
         private IEnumerator AllCubesDoneNowCheck()
         {
-            yield return new WaitForSecondsRealtime(4f);
-            bool validPattern = false;
-            foreach (PlatformCubeView item in platformCubeViews)
-            {
-                // logic to check the pattern, can be anything you like
-                if (item.cubeId == 1)
-                {
-
-                }
-            }
-
-            Debug.LogFormat("made a validPattern?? : {0}", validPattern);
-
-            if (!validPattern)
+            yield return new WaitForSecondsRealtime(1f);
+            if (currentSequence != correctSequence)
             {
                 // reset the platforms
                 foreach (PlatformCubeView item in platformCubeViews)
                 {
                     item.Reset();
                 }
-
-                this.enteredPlatforms.Clear();
+                currentSequence = "";
             }
             else
             {
-                // unlock the new level and elivator 
+                levelEndTransform.DOMoveY(2, 2f);
             }
         }
     }
