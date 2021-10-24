@@ -73,6 +73,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6519232427028178885}
     m_Modifications:
+    - target: {fileID: 2223099579653580812, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
+      propertyPath: m_text
+      value: 'Devs - Hitesh,Rutvij,Vishnu,Venkat
+
+
+        Assets
+
+        Voice
+        overs - 15.ai
+
+        Songs - HeatleyBros'
+      objectReference: {fileID: 0}
     - target: {fileID: 2223099581004415636, guid: 63fff0e10297f0b43ae2a4b264db562f, type: 3}
       propertyPath: m_IsActive
       value: 0
