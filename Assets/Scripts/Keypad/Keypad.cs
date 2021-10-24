@@ -5,7 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 
-public class KeypadSubmitEvent : UnityEvent<string>{
+public class KeypadSubmitEvent : UnityEvent<string>
+{
 
 }
 
@@ -25,7 +26,7 @@ public class Keypad : MonoBehaviour
     bool autoCloseOnSubmit;
 
 
-    public void ShowKeypad(bool autoCloseOnSubmit=true)
+    public void ShowKeypad(bool autoCloseOnSubmit = false)
     {
         this.autoCloseOnSubmit = autoCloseOnSubmit;
 
@@ -38,6 +39,8 @@ public class Keypad : MonoBehaviour
             });
         }
 
+        deleteButton.onClick.RemoveAllListeners();
+        submitButton.onClick.RemoveAllListeners();
         deleteButton.onClick.AddListener(OnPressDelete);
         submitButton.onClick.AddListener(OnPressSubmit);
 
@@ -54,16 +57,16 @@ public class Keypad : MonoBehaviour
         if (fadeRoutine != null)
             StopCoroutine(fadeRoutine);
 
-        fadeRoutine = StartCoroutine(Fade(fadeIn:false));
+        fadeRoutine = StartCoroutine(Fade(fadeIn: false));
     }
 
-    IEnumerator Fade(bool fadeIn=true, float dur = 0.5f, bool destroyOnFadeOut = true)
+    IEnumerator Fade(bool fadeIn = true, float dur = 0.5f, bool destroyOnFadeOut = false)
     {
         yield return new WaitForEndOfFrame();
         float currAlpha = cg.alpha;
         float timeStep = 0;
         float newAlpha = fadeIn ? 1 : 0;
-        while(timeStep <= 1)
+        while (timeStep <= 1)
         {
             timeStep += Time.deltaTime / dur;
             cg.alpha = Mathf.Lerp(currAlpha, newAlpha, timeStep);
@@ -111,12 +114,12 @@ public class Keypad : MonoBehaviour
             CloseKeypad();
     }
 
-    private void Start()
-    {
-        ShowKeypad();
-        RegisterToSubmit((string data) =>
-        {
-            Debug.Log(data);
-        });
-    }
+    // private void Start()
+    // {
+    //     ShowKeypad();
+    //     RegisterToSubmit((string data) =>
+    //     {
+    //         Debug.Log(data);
+    //     });
+    // }
 }
