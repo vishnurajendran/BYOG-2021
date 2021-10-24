@@ -286,7 +286,7 @@ namespace Scripts.FPSController
             RaycastHit hit;
             Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             Debug.DrawRay(m_Camera.transform.position, m_Camera.transform.forward, Color.green);
-            if (Physics.Raycast(ray, out hit, 2.3f))
+            if (Physics.Raycast(ray, out hit, 3f))
             {
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null)
                 {

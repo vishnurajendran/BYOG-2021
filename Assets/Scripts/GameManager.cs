@@ -143,6 +143,9 @@ public class GameManager : MonoBehaviour
         mainMenu.gameObject.SetActive(false);
         hud.gameObject.SetActive(true);
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        cursorLockedVar = true;
 
     }
 
