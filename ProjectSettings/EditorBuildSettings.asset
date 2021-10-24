@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Rutvij_WorkArea.unity
-    guid: a57c9012dd5a1de4f885c42df14fb5cd
+    path: Assets/Scenes/VenkatTestScene.unity
+    guid: bad98c62f4a4a54478870deae22c6a7d
   m_configObjects: {}
