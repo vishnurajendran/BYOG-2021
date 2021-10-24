@@ -285,7 +285,7 @@ namespace Scripts.FPSController
         {
             RaycastHit hit;
             Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-            if (Physics.Raycast(ray, out hit, 2.3f))
+            if (Physics.SphereCast(ray,1, out hit, 5))
             {
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null)
                 {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,7 +19,11 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-    private AudioSource audioSource;
+    [SerializeField] AudioSource voSource;
+    [SerializeField] AudioSource bgSource;
+
+    [SerializeField] AudioClip[] bgClips;
+
     public static AudioManager instance;
 
     void Awake()
@@ -27,7 +32,6 @@ public class AudioManager : MonoBehaviour
         {
             GameObject.DontDestroyOnLoad(this.gameObject);
             instance = this;
-            audioSource = GetComponent<AudioSource>();
         }
         else
         {
@@ -35,14 +39,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void PlayVOAudio(string key)
     {
-        PlayAudio("First_Reset");
-    }
-
-    public void PlayAudio(string key)
-    {
-        audioSource.PlayOneShot(GetAudioClip(key));
+        voSource.PlayOneShot(GetAudioClip(key));
     }
 
     public Dictionary<string, AudioInfo> audioLookup = new Dictionary<string, AudioInfo>{
@@ -52,5 +51,22 @@ public class AudioManager : MonoBehaviour
     public AudioClip GetAudioClip(string key)
     {
         return Resources.Load<AudioClip>(audioLookup[key].voName);
+    }
+
+    public void PlayBG(int levelNum)
+    {
+        if (bgClips[levelNum] == bgSource.clip)
+            return;
+
+        Sequence seq = DOTween.Sequence()
+            .Append(bgSource.DOFade(0, 0.15f))
+            .AppendCallback(() => {
+                bgSource.Stop();
+                bgSource.loop = true;
+                bgSource.clip = bgClips[levelNum];
+                bgSource.Play();
+                bgSource.DOFade(1, 0.15f);
+            });
+        
     }
 }
