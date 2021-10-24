@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Level5Trigger : MonoBehaviour
 {
-    
     [SerializeField]
     private Level5Controller level5Controller;
 
@@ -24,4 +23,11 @@ public class Level5Trigger : MonoBehaviour
         }
     }
 
+    void update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            level5Controller.ShowHideKeypad(false);
+        }
+    }
 }
